@@ -1,0 +1,32 @@
+.mat-mdc-header-row{
+    background-color: #808692;
+}
+.mat-mdc-header-cell{
+    color: #ffffff;
+}
+.btn-submit{
+    margin-top: 20px;
+    float: right;
+}
+.dialog-title{
+    color: #000;
+    font-size: 24px;
+    padding-bottom: 20px;
+}
+.btn-save{
+    display: flex ;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+.title{
+    font-size: 20px;
+    font-weight: 600;
+}
+.description{
+    font-size: 14px;
+    font-weight: 400;
+}
+mat-form-field {
+    width: 100%;
+}

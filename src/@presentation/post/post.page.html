@@ -1,0 +1,71 @@
+<div class="row p-5">
+    <div class="col-12">
+        <table mat-table [dataSource]="arrayUsers" class="mat-elevation-z8">
+          <mat-accordion>
+            <mat-expansion-panel hideToggle>
+              <mat-expansion-panel-header>
+
+
+            <ng-container matColumnDef="Nombre">
+              <th mat-header-cell *matHeaderCellDef> Nombre </th>
+              <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+            </ng-container>
+          
+            <ng-container matColumnDef="Username">
+              <th mat-header-cell *matHeaderCellDef> Username </th>
+              <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+            </ng-container>
+          
+            <ng-container matColumnDef="Direccion">
+              <th mat-header-cell *matHeaderCellDef> Direccion </th>
+              <td mat-cell *matCellDef="let element"> {{element.address.street}} </td>
+            </ng-container>
+          
+            <ng-container matColumnDef="Correo">
+              <th mat-header-cell *matHeaderCellDef> Correo </th>
+              <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Phone Number">
+                <th mat-header-cell *matHeaderCellDef> Phone Number </th>
+                <td mat-cell *matCellDef="let element"> {{element.phone}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Post">
+                <th mat-header-cell *matHeaderCellDef> Post </th>
+                <td mat-cell *matCellDef="let element"> 
+                  <mat-accordion>
+                    <mat-expansion-panel (opened)="openPost(element.id)"
+                                         (closed)="closePost()">
+                      <mat-expansion-panel-header>
+                        <mat-panel-description>
+                          {{panelOpenState ? 'Ocultar' : 'Ver'}}
+                        </mat-panel-description>
+                      </mat-expansion-panel-header>
+                      
+                      <div *ngFor="let i of arrayPosts; let first = first; let last = last">
+                        <p class="title">{{i.title}}</p>
+                        <p class="descrption">{{i.body}}</p>
+                      </div>
+
+                      <button mat-raised-button color="primary" class="btn-submit" (click)="openDialog(element.id)">
+                        Crear un post</button>
+
+                    </mat-expansion-panel>
+                  </mat-accordion>
+                </td>
+            </ng-container>
+            
+              
+              </mat-expansion-panel-header>
+              <p>I'm visible because I am open</p>
+            </mat-expansion-panel>
+          </mat-accordion>
+            
+          
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+          
+    </div>
+</div>
