@@ -13,11 +13,9 @@ export class AppComponent {
   constructor(
     private idle: Idle, private keepalive: Keepalive
   ){
-    // sets an idle timeout of 5 seconds, for testing purposes.
     idle.setIdle(5);
-    // sets a timeout period of 5 seconds. after 10 seconds of inactivity, the user will be considered timed out.
-    idle.setTimeout(5);
-    // sets the default interrupts, in this case, things like clicks, scrolls, touches to the document
+    // logout after 15 minutes
+    idle.setTimeout(900);
     idle.setInterrupts(DEFAULT_INTERRUPTSOURCES);
 
     idle.onIdleEnd.subscribe(() => { 
@@ -26,6 +24,7 @@ export class AppComponent {
     
     idle.onTimeout.subscribe(() => {
       console.log("Time out");
+      alert("Tu sesion ha expirado")
     });
     
     idle.onIdleStart.subscribe(() => {
